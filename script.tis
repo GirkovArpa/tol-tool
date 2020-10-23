@@ -1,0 +1,48 @@
+function self.ready() {
+  const w = self.intrinsicWidthMax();
+  const h = self.intrinsicHeight(w);
+  const (sw, sh) = view.screenBox(#frame, #dimension);
+  view.move((sw / 2) - (w / 2), (sh / 2) - (h / 2), w, h, true);
+  view.windowResizable = false;
+}
+
+view << event statechange { 
+  view.windowTopmost = true;
+};
+
+const factions = {
+  Unknown: ['King'],
+  'Blue-Dragon': ['Good King', 'Sheriff', 'Mystic', 'Prince', 'Princess', 'Paladin', 'Court Wizard', 'Knight', 'Observer', 'Butler', 'Noble', 'Physician', 'Hunter', 'Drunk', 'Chronomancer', 'Maid'],
+  Unseen: ['Evil King', 'Mastermind', 'Assassin', 'Marshal', 'Nightwatch', 'Enforcer', 'Aristocrat', 'Duchess', 'Sage', 'Servant', 'Illusionist', 'Poacher', 'Handmaiden', 'Timesnatcher'],
+  Cult: ['Cult King', 'Cult Leader', 'Apostle', 'Ritualist', 'Invoker', 'Seeker'],
+  Neutral: ['Neutral King', 'Fool', 'Alchemist', 'Scorned', 'Inquisitor', 'Mercenary', 'Sellsword'],
+  'Neutral-Killer' : ['Psycho King', 'Reaper', 'Sorcerer', 'Possessor']
+};
+
+for (var i = 0; i < 16; i++) {
+    const li = new Element("li");
+    const select = li.$append(<select|dropdown size="16"></select>);
+  const faction_keys = Object.keys(factions);
+  select.options.$append(<option value=?><Unknown> <Unknown></option>);
+  select.value = "Unknown";
+  for (var faction in faction_keys) {
+    if (faction.toString() != "Unknown") {
+      select.options.$append(<option value={faction}><{faction}>{faction.toString().replace('-', ' ')}</{faction}></option>);
+    }
+    for (var role in factions[faction].sort()) {
+      select.options.$append(<option value={role}><{faction}>{role}</{faction}></option>);
+    }
+  }
+  if (i == 0) {
+    select.value = "King";
+  }
+  $(ul).append(li);
+}
+
+$(.info).on("click", function() {
+  view.msgbox(
+    #information,
+    "This Application uses Sciter Engine (https://sciter.com), copyright Terra Informatica Software, Inc.",
+    "About ToL Tool"
+  );
+});

@@ -1,0 +1,121 @@
+ @font-face {
+  font-family: 'Overlock';
+  src: url('./overlock.ttf');
+}	 
+
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+ 
+ html {
+   overflow: hidden;
+   width: 120px;
+   height: 359px;
+   background: rgba(255, 255, 255, .01);
+ }
+ 
+ body {
+   overflow: hidden;
+   margin: 0;
+   padding: 0;
+   width:  120px;
+   height: 359px;
+   float: right;
+ }
+
+ .drag {
+  background: orange;
+  width: 120px;
+  text-align: center;
+  font-family: Overlock;
+ }
+
+ .drag:hover {
+  background: purple;
+ }  
+
+
+
+ button[role=window-close] {
+  width: 16px;
+  height: 16px;
+  float: right;
+ }
+
+ button.info {
+   width: 16px;
+   height: 16px;
+   text-align: center;
+   float: right;
+ }
+
+
+ ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   float: right;
+ }
+
+ li {
+   flex-direction: horizontal;
+   flow: horizontal;
+   font-family: 'Courier New', Courier, monospace;
+ }
+
+ select, option {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  font-family: Overlock;
+  font-size: 16;
+ }
+
+ select:hover {
+  background: rgba(255, 255, 255, 0.1);
+ }
+
+ option:hover {
+   background: white;
+ }
+
+ select {
+  background: transparent;
+   height: 22px;
+   line-height: 22px;
+   margin-bottom: -1px !important;
+   padding: 0 !important;
+   border: none;
+ }
+
+ select > button { display: none; }
+ select > popup { background: rgb(30, 20, 10); }
+
+ option {
+   background: transparent;
+ }
+
+ Blue-Dragon {
+  color: rgb(0, 163, 255);
+ }
+
+ Unseen {
+  color: rgb(154, 4, 107);
+ }
+
+ Cult {
+   color: rgb(137, 14, 0);
+ }
+
+ Neutral {
+  color: rgb(200, 200, 200);
+ }
+
+ Neutral-Killer {
+  color: rgb(200, 200, 200);
+ }
+
+Unknown {
+  color: rgb(212, 175, 55);
+}
