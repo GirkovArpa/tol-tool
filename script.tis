@@ -12,11 +12,11 @@ view << event statechange {
 
 const factions = {
   Unknown: ['King'],
-  'Blue-Dragon': ['Good King', 'Sheriff', 'Mystic', 'Prince', 'Princess', 'Paladin', 'Court Wizard', 'Knight', 'Observer', 'Butler', 'Noble', 'Physician', 'Hunter', 'Drunk', 'Chronomancer', 'Maid'],
-  Unseen: ['Evil King', 'Mastermind', 'Assassin', 'Marshal', 'Nightwatch', 'Enforcer', 'Aristocrat', 'Duchess', 'Sage', 'Servant', 'Illusionist', 'Poacher', 'Handmaiden', 'Timesnatcher'],
-  Cult: ['Cult King', 'Cult Leader', 'Apostle', 'Ritualist', 'Invoker', 'Seeker'],
-  Neutral: ['Neutral King', 'Fool', 'Alchemist', 'Scorned', 'Inquisitor', 'Mercenary', 'Sellsword'],
-  'Neutral-Killer' : ['Psycho King', 'Reaper', 'Sorcerer', 'Possessor']
+  'Blue-Dragon': ['Good King', 'Sheriff',  'Noble', 'Mystic', 'Prince', 'Court Wizard', 'Princess', 'Paladin', 'Knight', 'Observer', 'Maid', 'Butler', 'Physician', 'Hunter', 'Drunk', 'Chronomancer' ],
+  Unseen: ['Evil King', 'Mastermind', 'Assassin', 'Marshal', 'Nightwatch', 'Aristocrat',  'Illusionist', 'Duchess', 'Timesnatcher', 'Sage', 'Servant','Poacher', 'Handmaiden', 'Enforcer'],
+  Neutral: ['Neutral King', 'Alchemist','Inquisitor', 'Fool',  'Scorned', 'Mercenary', 'Sellsword'],
+  'Neutral-Killer' : ['Psycho King', 'Reaper', 'Sorcerer', 'Possessor'],
+  Cult: ['Cult King', 'Cult Leader','Ritualist', 'Apostle',  'Invoker', 'Seeker'],
 };
 
 for (var i = 0; i < 16; i++) {
