@@ -38,6 +38,16 @@ for (var i = 0; i < 16; i++) {
   select.options.$append(<option value="Convert Immune"><img src="./icons/convert_immune.png"></option>);
   select.options.$append(<option value="Bleed Immune"><img src="./icons/bleed_immune.png"></option>);
 
+  select.bleeding = false;
+  select << event contextmenu {
+    select.bleeding = !select.bleeding;
+    if (select.bleeding == true) {
+      select.attributes.addClass("bleeding");
+    } else {
+      select.attributes.removeClass("bleeding"); 
+    }
+  }
+
   for (var faction in faction_keys) {
     if (faction.toString() != "Unknown") {
       select.options.$append(<option value={faction}><{faction}>{faction.toString().replace('-', ' ')}</{faction}></option>);
