@@ -1,5 +1,5 @@
 if (view.connectToInspector) { // the view is in debug mode
-  view.connectToInspector(rootElement, inspectorIpAddress);
+  //view.connectToInspector(rootElement, inspectorIpAddress);
 }
 
 function self.ready() {
