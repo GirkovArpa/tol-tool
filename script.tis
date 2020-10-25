@@ -1,3 +1,7 @@
+if (view.connectToInspector) { // the view is in debug mode
+  view.connectToInspector(rootElement, inspectorIpAddress);
+}
+
 function self.ready() {
   const w = self.intrinsicWidthMax();
   const h = self.intrinsicHeight(w);
@@ -20,17 +24,20 @@ const factions = {
 };
 
 for (var i = 0; i < 16; i++) {
-    const li = new Element("li");
-    const select = li.$append(<select|dropdown size="16"></select>);
+  const li = new Element("li");
+  const select = li.$append(<select|dropdown size="16"></select>);
   const faction_keys = Object.keys(factions);
   select.options.$append(<option value=?><Unknown> <Unknown></option>);
   select.value = "Unknown";
+  select.options.$append(<option value="Killer or Offensive"><img src="./icons/killer.png"> <img src="./icons/offensive.png"></option>);
+  select.options.$append(<option value="Special or Investigative"><img src="./icons/special.png"> <img src="./icons/investigative.png"></option>);
+  select.options.$append(<option value="Social or Support"><img src="./icons/social.png"> <img src="./icons/support.png"></option>);
   for (var faction in faction_keys) {
     if (faction.toString() != "Unknown") {
       select.options.$append(<option value={faction}><{faction}>{faction.toString().replace('-', ' ')}</{faction}></option>);
     }
     for (var role in factions[faction].sort()) {
-      select.options.$append(<option value={role}><{faction}>{role}</{faction}></option>);
+      const option = select.options.$append(<option value={role}><{faction}>{role}</{faction}></option>);
     }
   }
   if (i == 0) {
@@ -42,7 +49,7 @@ for (var i = 0; i < 16; i++) {
 $(.info).on("click", function() {
   view.msgbox(
     #information,
-    "This Application uses Sciter Engine (https://sciter.com), copyright Terra Informatica Software, Inc.",
+    "This application uses Sciter Engine (https://sciter.com), © Terra Informatica Software, Inc.",
     "About ToL Tool"
   );
 });
