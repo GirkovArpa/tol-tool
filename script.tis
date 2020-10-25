@@ -32,6 +32,12 @@ for (var i = 0; i < 16; i++) {
   select.options.$append(<option value="Killer or Offensive"><img src="./icons/killer.png"> <img src="./icons/offensive.png"></option>);
   select.options.$append(<option value="Special or Investigative"><img src="./icons/special.png"> <img src="./icons/investigative.png"></option>);
   select.options.$append(<option value="Social or Support"><img src="./icons/social.png"> <img src="./icons/support.png"></option>);
+  
+  select.options.$append(<option value="Occupy Immune"><img src="./icons/occupy_immune.png"></option>);
+  select.options.$append(<option value="Death Immune"><img src="./icons/occupy_immune.png"></option>);
+  select.options.$append(<option value="Convert Immune"><img src="./icons/occupy_immune.png"></option>);
+  select.options.$append(<option value="Bleed Immune"><img src="./icons/bleed_immune.png"></option>);
+
   for (var faction in faction_keys) {
     if (faction.toString() != "Unknown") {
       select.options.$append(<option value={faction}><{faction}>{faction.toString().replace('-', ' ')}</{faction}></option>);
