@@ -48,6 +48,18 @@ for (var i = 0; i < 16; i++) {
     }
   }
 
+  select.left_game = false;
+  select << event mousedown (e) {
+    if (e.buttons == 4) { // middle mouse button 
+      select.left_game = !select.left_game;
+      if (select.left_game == true) {
+        select.attributes.addClass("left_game");
+      } else {
+        select.attributes.removeClass("left_game"); 
+      }
+    }
+  }
+
   for (var faction in faction_keys) {
     if (faction.toString() != "Unknown") {
       select.options.$append(<option value={faction}><{faction}>{faction.toString().replace('-', ' ')}</{faction}></option>);

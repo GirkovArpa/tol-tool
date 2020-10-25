@@ -24,4 +24,6 @@ Label players from a list containing:
 - Flirt Feedback, e.g. ![Special](icons/special.png) ![Investigative](icons/investigative.png)
 - Immunities, e.g. ![Occupy Immune](icons/occupy_immune.png)
 
-Right-click to mark as **bleeding**, and right-click to unmark. 
+Right-click to mark as **bleeding**, and right-click again to unmark. 
+
+Middle-click to mark as **disconnected**, and middle-click again to unmark.

@@ -100,6 +100,10 @@
    background-color: rgba(255, 0, 0, .5) !important;
  }
 
+ select.left_game {
+   background-color: rgba(33, 102, 230, 0.521) !important;
+ }
+
  img {
    width: 16px;
    height: 16px;
