@@ -1,0 +1,33 @@
+ @font-face {
+   font-family: 'Overlock';
+   src: url('./overlock.ttf');
+ }
+
+ .context * {
+   font-family: Overlock;
+   font-size: 16;
+ }
+
+ .ctx-menu {
+   background-color: sienna;
+ }
+
+ .ctx-menu:hover {
+   background-color: white;
+ }
+
+ #bleeding {
+
+ }
+
+ #disconnected {
+   content: '🔌';
+ }
+
+ .bleeding {
+   background-color: rgba(255, 0, 0, 0.7);
+ }
+
+ .disconnected {
+   background-color: rgba(0, 0, 255, 0.7);
+ }

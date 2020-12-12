@@ -1,46 +1,44 @@
  @font-face {
-  font-family: 'Overlock';
-  src: url('./overlock.ttf');
-}	 
+   font-family: 'Overlock';
+   src: url('./overlock.ttf');
+ }
 
-* {
-  margin: 0 !important;
-  padding: 0 !important;
-}
- 
+ * {
+   margin: 0 !important;
+   padding: 0 !important;
+ }
+
  html {
    overflow: hidden;
    width: 120px;
    height: 359px;
    background: rgba(255, 255, 255, .01);
  }
- 
+
  body {
    overflow: hidden;
    margin: 0;
    padding: 0;
-   width:  120px;
+   width: 120px;
    height: 359px;
    float: right;
  }
 
  .drag {
-  background: orange;
-  width: 120px;
-  text-align: center;
-  font-family: Overlock;
+   background: orange;
+   width: 120px;
+   text-align: center;
+   font-family: Overlock;
  }
 
  .drag:hover {
-  background: purple;
- }  
-
-
+   background: purple;
+ }
 
  button[role=window-close] {
-  width: 16px;
-  height: 16px;
-  float: right;
+   width: 16px;
+   height: 16px;
+   float: right;
  }
 
  button.info {
@@ -50,30 +48,31 @@
    float: right;
  }
 
-
  ul {
    list-style: none;
    margin: 0;
    padding: 0;
    float: right;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.39);
  }
 
  li {
    flex-direction: horizontal;
    flow: horizontal;
    font-family: 'Courier New', Courier, monospace;
+   context-menu: url(./context_menu.htm);
  }
 
  select, option {
-  margin: 0;
-  padding: 0;
-  text-align: right;
-  font-family: Overlock;
-  font-size: 16;
+   margin: 0;
+   padding: 0;
+   text-align: right;
+   font-family: Overlock;
+   font-size: 16;
  }
 
  select:hover {
-  background: rgba(255, 255, 255, 0.1);
+   background: rgba(255, 255, 255, 0.1);
  }
 
  option:hover {
@@ -81,7 +80,7 @@
  }
 
  select {
-  background: transparent;
+   background: transparent;
    height: 22px;
    line-height: 22px;
    margin-bottom: -1px !important;
@@ -89,8 +88,13 @@
    border: none;
  }
 
- select > button { display: none; }
- select > popup { background: rgb(30, 20, 10); }
+ select>button {
+   display: none;
+ }
+
+ select>popup {
+   background: rgb(30, 20, 10);
+ }
 
  option {
    background: transparent;
@@ -111,11 +115,11 @@
  }
 
  Blue-Dragon {
-  color: rgb(0, 163, 255);
+   color: rgb(0, 163, 255);
  }
 
  Unseen {
-  color: rgb(154, 4, 107);
+   color: rgb(154, 4, 107);
  }
 
  Cult {
@@ -123,13 +127,17 @@
  }
 
  Neutral {
-  color: rgb(200, 200, 200);
+   color: rgb(200, 200, 200);
  }
 
  Neutral-Killer {
-  color: rgb(200, 200, 200);
+   color: rgb(200, 200, 200);
  }
 
-Unknown {
-  color: rgb(212, 175, 55);
-}
+ Unknown {
+   color: rgb(212, 175, 55);
+ }
+
+ menu {
+   width: max-intrinsic;
+ }

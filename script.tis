@@ -15,12 +15,12 @@ view << event statechange {
 };
 
 const factions = {
-  Unknown: ['King'],
-  'Blue-Dragon': ['Good King', 'Sheriff',  'Noble', 'Mystic', 'Prince', 'Court Wizard', 'Princess', 'Paladin', 'Knight', 'Observer', 'Maid', 'Butler', 'Physician', 'Hunter', 'Drunk', 'Chronomancer' ],
-  Unseen: ['Evil King', 'Mastermind', 'Assassin', 'Marshal', 'Nightwatch', 'Aristocrat',  'Illusionist', 'Duchess', 'Timesnatcher', 'Sage', 'Alcoholic', 'Servant','Poacher', 'Handmaiden', 'Enforcer'],
-  Neutral: ['Neutral King', 'Alchemist','Inquisitor', 'Fool',  'Scorned', 'Mercenary', 'Sellsword'],
+  Unknown: [],
+  'Blue-Dragon': ['Priest', 'Sheriff', 'Noble', 'Mystic', 'Prince', 'Court Wizard', 'Princess', 'Paladin', 'Knight', 'Observer', 'Maid', 'Butler', 'Physician', 'Hunter', 'Drunk', 'Chronomancer' ],
+  Unseen: ['Mastermind', 'Assassin', 'Marshal', 'Nightwatch', 'Aristocrat',  'Illusionist', 'Duchess', 'Timesnatcher', 'Sage', 'Alcoholic', 'Servant','Poacher', 'Handmaiden', 'Enforcer', 'Herbalist' ],
+  Neutral: ['Alchemist', 'Inquisitor', 'Fool', 'Scorned', 'Mercenary', 'Sellsword', 'Pretender' ],
   'Neutral-Killer' : ['Psycho King', 'Reaper', 'Sorcerer', 'Possessor'],
-  Cult: ['Cult King', 'Cult Leader','Ritualist', 'Apostle',  'Invoker', 'Seeker'],
+  Cult: ['Cult Leader','Ritualist', 'Apostle', 'Invoker', 'Seeker'],
 };
 
 for (var i = 0; i < 16; i++) {
@@ -29,49 +29,52 @@ for (var i = 0; i < 16; i++) {
   const faction_keys = Object.keys(factions);
   select.options.$append(<option value=?><Unknown> <Unknown></option>);
   select.value = "Unknown";
-  select.options.$append(<option value="Killer or Offensive"><img src="./icons/killer.png"> <img src="./icons/offensive.png"></option>);
-  select.options.$append(<option value="Special or Investigative"><img src="./icons/special.png"> <img src="./icons/investigative.png"></option>);
-  select.options.$append(<option value="Social or Support"><img src="./icons/social.png"> <img src="./icons/support.png"></option>);
-  
-  select.options.$append(<option value="Occupy Immune"><img src="./icons/occupy_immune.png"> </option>);
-  select.options.$append(<option value="Death Immune"><img src="./icons/death_immune.png"> </option>);
-  select.options.$append(<option value="Convert Immune"><img src="./icons/convert_immune.png"> </option>);
-  select.options.$append(<option value="Bleed Immune"><img src="./icons/bleed_immune.png"> </option>);
-
-  select.bleeding = false;
-  select << event contextmenu {
-    select.bleeding = !select.bleeding;
-    if (select.bleeding == true) {
-      select.attributes.addClass("bleeding");
-    } else {
-      select.attributes.removeClass("bleeding"); 
-    }
-  }
-
-  select.left_game = false;
-  select << event mousedown (e) {
-    if (e.buttons == 4) { // middle mouse button 
-      select.left_game = !select.left_game;
-      if (select.left_game == true) {
-        select.attributes.addClass("left_game");
-      } else {
-        select.attributes.removeClass("left_game"); 
-      }
-    }
-  }
 
   for (var faction in faction_keys) {
     if (faction.toString() != "Unknown") {
-      select.options.$append(<option value={faction}><{faction}>{faction.toString().replace('-', ' ')}</{faction}></option>);
+      //select.options.$append(<option value={faction}><{faction}>{faction.toString().replace('-', ' ')}</{faction}></option>);
     }
     for (var role in factions[faction].sort()) {
       const option = select.options.$append(<option value={role}><{faction}>{role}</{faction}></option>);
     }
   }
-  if (i == 0) {
-    select.value = "King";
-  }
   $(ul).append(li);
+
+  li.on("change", function(e) {
+    for (var img in e.owner.$$(img)) {
+      img.remove();
+    }
+  });
+
+  li.onControlEvent = function(event) {
+  if (event.type == Event.MENU_ITEM_CLICK)  {
+      const item = event.target.attributes["id"]; 
+      //debug info: item;
+      //debug info: event.owner.html;
+      //debug info: event.owner.outerHtml;
+      //debug info: event.owner.text;
+      const srcs = [];
+      if (["killer_offensive", "special_investigative", "social_support"].indexOf(item) != -1) {
+        for (var src in item.split("_")) {
+          srcs.push(src);
+        }
+      } else if (["bleeding", "disconnected"].indexOf(item) != -1) {
+        if (item == "bleeding") {
+          li.attributes.toggleClass("bleeding");
+        } else if (item == "disconnected") {
+          li.attributes.toggleClass("disconnected");
+        }
+      } else {
+        srcs.push(item);
+      }
+      const imgs = srcs.map(function(src) {
+        return String.$(<img src="./icons/{src}.png" />);
+      }).join("");
+    
+      event.owner.outerHtml = String.$({event.owner.outerHtml}{imgs});
+      return;
+  }
+}
 }
 
 $(.info).on("click", function() {
@@ -81,3 +84,4 @@ $(.info).on("click", function() {
     "About ToL Tool"
   );
 });
+
