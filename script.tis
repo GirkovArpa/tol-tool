@@ -1,4 +1,4 @@
-if (view.connectToInspector) { // the view is in debug mode
+if (view.connectToInspector) {
   //view.connectToInspector(rootElement, inspectorIpAddress);
 }
 
@@ -20,20 +20,17 @@ const factions = {
   Unseen: ['Mastermind', 'Assassin', 'Marshal', 'Nightwatch', 'Aristocrat',  'Illusionist', 'Duchess', 'Timesnatcher', 'Sage', 'Alcoholic', 'Servant','Poacher', 'Handmaiden', 'Enforcer', 'Herbalist' ],
   Neutral: ['Alchemist', 'Inquisitor', 'Fool', 'Scorned', 'Mercenary', 'Sellsword', 'Pretender' ],
   'Neutral-Killer' : ['Psycho King', 'Reaper', 'Sorcerer', 'Possessor'],
-  Cult: ['Cult Leader','Ritualist', 'Apostle', 'Invoker', 'Seeker'],
+  Cult: ['Cult Leader', 'Ritualist', 'Apostle', 'Invoker', 'Seeker'],
 };
 
 for (var i = 0; i < 16; i++) {
   const li = new Element("li");
   const select = li.$append(<select|dropdown size="16"></select>);
   const faction_keys = Object.keys(factions);
-  select.options.$append(<option value=?><Unknown> <Unknown></option>);
+  select.options.$append(<option value=" "><Unknown> <Unknown></option>);
   select.value = "Unknown";
 
   for (var faction in faction_keys) {
-    if (faction.toString() != "Unknown") {
-      //select.options.$append(<option value={faction}><{faction}>{faction.toString().replace('-', ' ')}</{faction}></option>);
-    }
     for (var role in factions[faction].sort()) {
       const option = select.options.$append(<option value={role}><{faction}>{role}</{faction}></option>);
     }
@@ -49,10 +46,6 @@ for (var i = 0; i < 16; i++) {
   li.onControlEvent = function(event) {
   if (event.type == Event.MENU_ITEM_CLICK)  {
       const item = event.target.attributes["id"]; 
-      //debug info: item;
-      //debug info: event.owner.html;
-      //debug info: event.owner.outerHtml;
-      //debug info: event.owner.text;
       const srcs = [];
       if (["killer_offensive", "special_investigative", "social_support"].indexOf(item) != -1) {
         for (var src in item.split("_")) {

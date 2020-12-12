@@ -4,7 +4,7 @@ Transparent overlay for tracking claims in the fantastic multiplayer game [Thron
 
 ## Preview
 
-![GIF Preview](screenshot.gif)
+![screenshot](screenshot.png)
 
 ## Installation
 
@@ -16,14 +16,8 @@ Transparent overlay for tracking claims in the fantastic multiplayer game [Thron
 
 ## Usage
 
-Label players from a list containing: 
+Drag the overlay over the list of players.
 
-- Kings, e.g. **[Good King](#)**
-- Roles, e.g. **[Prince](#)**
-- Factions, e.g. **[Blue Dragon](#)**
-- Flirt Feedback, e.g. ![Special](icons/special.png) ![Investigative](icons/investigative.png)
-- Immunities, e.g. ![Occupy Immune](icons/occupy_immune.png)
+Click to assign their role or claim, like Prince or Alchemist.
 
-Right-click to mark as **bleeding**, and right-click again to unmark. 
-
-Middle-click to mark as **disconnected**, and middle-click again to unmark.
+Right-click to assign a passive, like bleed or occupy immunity.
